@@ -1,0 +1,56 @@
+services:
+  app:
+    restart: always
+    env_file:
+      - .env.local
+    environment:
+      TEMPLATE_PHP_INI: production
+    ports:
+      - "7071:80"
+  database:
+    restart: always
+    env_file:
+      - .env.local
+    ports:
+      - "5434:5432"
+  pgbackups:
+    image: prodrigestivill/postgres-backup-local
+    restart: always
+    user: postgres:postgres
+    volumes:
+      - ./var/backup/db:/backups
+    links:
+      - database
+    depends_on:
+      - database
+    env_file:
+      - .env.local
+    environment:
+      POSTGRES_HOST: database
+      POSTGRES_DB: ${POSTGRES_DB:-firecount}
+      POSTGRES_USER: ${POSTGRES_USER:-firecount_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-!ChangeMe!}
+      POSTGRES_EXTRA_OPTS: -Fc -Z1 --no-owner --no-privileges --schema=public --blobs
+      SCHEDULE: '@daily'
+      BACKUP_ON_START: 'TRUE'
+      BACKUP_KEEP_DAYS: 7
+      BACKUP_KEEP_WEEKS: 4
+      BACKUP_KEEP_MONTHS: 6
+      BACKUP_SUFFIX: '.dump.gz'
+
+  ###> symfony/messenger worker ###
+  messenger_worker:
+    environment:
+      PHP_EXTENSION_PGSQL: 1
+      PHP_EXTENSION_PDO_PGSQL: 1
+    image: thecodingmachine/php:8.4-v4-apache-node22
+    working_dir: /var/www/html
+    volumes:
+      - "./:/var/www/html"
+    depends_on:
+      - database
+    command: php bin/console messenger:consume async -vv
+    restart: always
+    env_file:
+      - .env.local
+  ###< symfony/messenger worker ###

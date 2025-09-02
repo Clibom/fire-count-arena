@@ -1,0 +1,30 @@
+services:
+  app:
+    restart: always
+    env_file:
+      - .env.local
+    ports:
+      - "8180:80"
+    environment:
+      TEMPLATE_PHP_INI: demo
+  database:
+    restart: always
+    env_file:
+      - .env.local
+
+  ###> symfony/messenger worker ###
+  messenger_worker:
+    environment:
+      PHP_EXTENSION_PGSQL: 1
+      PHP_EXTENSION_PDO_PGSQL: 1
+    image: thecodingmachine/php:8.4-v4-apache-node22
+    working_dir: /var/www/html
+    volumes:
+      - "./:/var/www/html"
+    depends_on:
+      - database
+    command: php bin/console messenger:consume async -vv
+    restart: always
+    env_file:
+      - .env.local
+  ###< symfony/messenger worker ###

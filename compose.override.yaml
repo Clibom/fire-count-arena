@@ -1,0 +1,40 @@
+services:
+  app:
+    environment:
+      PHP_EXTENSION_XDEBUG: 1
+    depends_on:
+      - mailer
+    ports:
+      - "8080:80"
+  ###> doctrine/doctrine-bundle ###
+  database:
+    ports:
+      - "5435:5432"
+  ###< doctrine/doctrine-bundle ###
+
+  ###> symfony/mailer ###
+  mailer:
+    image: axllent/mailpit
+    ports:
+      - "1027"
+      - "8025:8025"
+    environment:
+      MP_SMTP_AUTH_ACCEPT_ANY: 1
+      MP_SMTP_AUTH_ALLOW_INSECURE: 1
+  ###< symfony/mailer ###
+
+  ###> symfony/messenger worker ###
+  messenger_worker:
+    environment:
+      PHP_EXTENSION_PGSQL: 1
+      PHP_EXTENSION_PDO_PGSQL: 1
+    image: thecodingmachine/php:8.4-v4-apache-node22
+    working_dir: /var/www/html
+    volumes:
+      - "./:/var/www/html"
+    depends_on:
+      - database
+      - mailer
+    command: php bin/console messenger:consume async -vv
+    restart: always
+  ###< symfony/messenger worker ###
