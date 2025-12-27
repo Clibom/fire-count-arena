@@ -22,3 +22,7 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    # Bind repository interface to Doctrine implementation
+    App\Domain\Repository\FireCountRepositoryInterface:
+        alias: App\Infrastructure\Repository\DoctrineFireCountRepository

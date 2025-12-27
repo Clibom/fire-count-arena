@@ -1,7 +1,9 @@
 services:
   ###> doctrine/doctrine-bundle ###
   app:
-    image: thecodingmachine/php:8.4-v4-apache-node22
+    image: thecodingmachine/php:8.4-v5-apache-node24
+    ports:
+      - "8080:80"
     environment:
       APACHE_DOCUMENT_ROOT: public/
       PHP_EXTENSION_PGSQL: 1
@@ -12,7 +14,7 @@ services:
       PHP_INI_POST_MAX_SIZE: 50M
     volumes:
       - "./:/var/www/html"
-      - "~/.composer:/film/docker/.composer"
+      - "~/.composer:/tmp/docker/.composer"
       - "~/.config/composer:/var/www/.config/composer"
     depends_on:
       database:

@@ -1,0 +1,51 @@
+# Fire Count Application - English Translations
+
+# Common
+app:
+    title: "Fire Count Arena"
+
+# Fire Count Form
+fire_count:
+    form:
+        title: "Fire Count Registration"
+        description: "Enter the number of people present in your session."
+        email:
+            label: "Email address"
+            placeholder: "your@email.com"
+        adults_count:
+            label: "Number of adults"
+        children_count:
+            label: "Number of children"
+        submit: "Submit"
+        success: "Your submission has been recorded. Check your email for the summary link."
+
+    summary:
+        title: "Fire Count Summary"
+        adults: "Adults"
+        children: "Children"
+        total: "Total People"
+        submitted_on: "Submitted on %date%"
+        not_found: "Summary not found."
+
+    email:
+        subject: "Fire Count Confirmation"
+        title: "Fire Count Submission Confirmed"
+        body: "Your submission has been recorded successfully."
+        adults: "Adults"
+        children: "Children"
+        total: "Total"
+        link_description: "Use the link below to access your summary at any time:"
+        view_summary: "View Summary"
+        permanent_link: "This link is permanent and will never expire."
+
+# Validation messages
+validation:
+    email:
+        not_blank: "Please enter your email address."
+        invalid: "Please enter a valid email address."
+    adults_count:
+        not_null: "Please enter the number of adults."
+        negative: "The number of adults cannot be negative."
+    children_count:
+        not_null: "Please enter the number of children."
+        negative: "The number of children cannot be negative."

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ 'fire_count.email.subject'|trans }}</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f4f4f4;">
+    <table role="presentation" style="width: 100%; border-collapse: collapse;">
+        <tr>
+            <td align="center" style="padding: 40px 0;">
+                <table role="presentation" style="width: 600px; max-width: 100%; background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    <tr>
+                        <td style="padding: 40px; text-align: center;">
+                            <div style="margin-bottom: 20px;">
+                                <img src="{{ absolute_url(asset('images/logo_hce_256.png')) }}" alt="{{ 'app.title'|trans }}" style="width: 128px; height: 128px;">
+                            </div>
+
+                            <h1 style="color: #333333; margin: 0 0 20px 0; font-size: 24px;">
+                                {{ 'fire_count.email.title'|trans }}
+                            </h1>
+
+                            <p style="color: #666666; font-size: 16px; line-height: 1.5; margin: 0 0 30px 0;">
+                                {{ 'fire_count.email.body'|trans }}
+                            </p>
+
+                            <table role="presentation" style="width: 100%; margin-bottom: 30px;">
+                                <tr>
+                                    <td style="padding: 20px; background-color: #f8f9fa; border-radius: 8px;">
+                                        <table role="presentation" style="width: 100%;">
+                                            <tr>
+                                                <td style="text-align: center; padding: 10px;">
+                                                    <div style="color: #666666; font-size: 14px; margin-bottom: 5px;">{{ 'fire_count.email.adults'|trans }}</div>
+                                                    <div style="color: #570df8; font-size: 36px; font-weight: bold;">{{ adultsCount }}</div>
+                                                </td>
+                                                <td style="text-align: center; padding: 10px;">
+                                                    <div style="color: #666666; font-size: 14px; margin-bottom: 5px;">{{ 'fire_count.email.children'|trans }}</div>
+                                                    <div style="color: #d926a9; font-size: 36px; font-weight: bold;">{{ childrenCount }}</div>
+                                                </td>
+                                                <td style="text-align: center; padding: 10px;">
+                                                    <div style="color: #666666; font-size: 14px; margin-bottom: 5px;">{{ 'fire_count.email.total'|trans }}</div>
+                                                    <div style="color: #333333; font-size: 36px; font-weight: bold;">{{ totalCount }}</div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <p style="color: #666666; font-size: 16px; line-height: 1.5; margin: 0 0 20px 0;">
+                                {{ 'fire_count.email.link_description'|trans }}
+                            </p>
+
+                            <a href="{{ summaryUrl }}"
+                               style="display: inline-block; padding: 15px 30px; background-color: #570df8; color: #ffffff; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 16px;">
+                                {{ 'fire_count.email.view_summary'|trans }}
+                            </a>
+
+                            <p style="color: #999999; font-size: 12px; margin: 30px 0 0 0;">
+                                {{ 'fire_count.email.permanent_link'|trans }}
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

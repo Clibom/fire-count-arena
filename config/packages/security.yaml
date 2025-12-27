@@ -41,7 +41,10 @@ security:
         - { path: ^/logout$, roles: PUBLIC_ACCESS }
         - { path: ^/dev/(admin|user)/login$, roles: PUBLIC_ACCESS }
         - { path: ^/(create|update)-password/.+$, roles: PUBLIC_ACCESS }
-        
+
+        # Fire count public routes (no authentication required)
+        - { path: ^/fire-count, roles: PUBLIC_ACCESS }
+
         # Toutes les autres routes nécessitent une authentification
         - { path: ^/, roles: ROLE_USER }
 

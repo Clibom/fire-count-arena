@@ -1,0 +1,51 @@
+# Fire Count Application - French Translations
+
+# Common
+app:
+    title: "Fire Count Arena"
+
+# Fire Count Form
+fire_count:
+    form:
+        title: "Enregistrement du comptage"
+        description: "Saisissez le nombre de personnes présentes à votre session."
+        email:
+            label: "Adresse email"
+            placeholder: "votre@email.com"
+        adults_count:
+            label: "Nombre d'adultes"
+        children_count:
+            label: "Nombre d'enfants"
+        submit: "Envoyer"
+        success: "Votre soumission a été enregistrée. Consultez votre email pour obtenir le lien vers le résumé."
+
+    summary:
+        title: "Résumé du comptage"
+        adults: "Adultes"
+        children: "Enfants"
+        total: "Total des personnes"
+        submitted_on: "Soumis le %date%"
+        not_found: "Résumé introuvable."
+
+    email:
+        subject: "Confirmation du comptage"
+        title: "Soumission du comptage confirmée"
+        body: "Votre soumission a été enregistrée avec succès."
+        adults: "Adultes"
+        children: "Enfants"
+        total: "Total"
+        link_description: "Utilisez le lien ci-dessous pour accéder à votre résumé à tout moment :"
+        view_summary: "Voir le résumé"
+        permanent_link: "Ce lien est permanent et n'expirera jamais."
+
+# Validation messages
+validation:
+    email:
+        not_blank: "Veuillez saisir votre adresse email."
+        invalid: "Veuillez saisir une adresse email valide."
+    adults_count:
+        not_null: "Veuillez saisir le nombre d'adultes."
+        negative: "Le nombre d'adultes ne peut pas être négatif."
+    children_count:
+        not_null: "Veuillez saisir le nombre d'enfants."
+        negative: "Le nombre d'enfants ne peut pas être négatif."

@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'fire_count.form.title'|trans }}{% endblock %}
+
+{% block body %}
+<div class="min-h-screen bg-base-200 flex items-center justify-center p-4">
+    <div class="card w-full max-w-md bg-base-100 shadow-xl">
+        <div class="card-body">
+            <div class="flex justify-center mb-4">
+                <img src="{{ asset('images/logo_hce_256.png') }}" alt="{{ 'app.title'|trans }}" class="w-32 h-32">
+            </div>
+
+            <p class="text-base-content/70 text-center mb-6">
+                {{ 'fire_count.form.description'|trans }}
+            </p>
+
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>{{ message|trans }}</span>
+                </div>
+            {% endfor %}
+
+            {{ form_start(form) }}
+                <div class="form-control w-full mb-4">
+                    <label class="label">
+                        <span class="label-text font-medium">{{ form_label(form.email) }}</span>
+                    </label>
+                    {{ form_widget(form.email) }}
+                    {% if form_errors(form.email)|length > 0 %}
+                        <label class="label">
+                            <span class="label-text-alt text-error">{{ form_errors(form.email) }}</span>
+                        </label>
+                    {% endif %}
+                </div>
+
+                <div class="form-control w-full mb-4">
+                    <label class="label">
+                        <span class="label-text font-medium">{{ form_label(form.adultsCount) }}</span>
+                    </label>
+                    {{ form_widget(form.adultsCount) }}
+                    {% if form_errors(form.adultsCount)|length > 0 %}
+                        <label class="label">
+                            <span class="label-text-alt text-error">{{ form_errors(form.adultsCount) }}</span>
+                        </label>
+                    {% endif %}
+                </div>
+
+                <div class="form-control w-full mb-4">
+                    <label class="label">
+                        <span class="label-text font-medium">{{ form_label(form.childrenCount) }}</span>
+                    </label>
+                    {{ form_widget(form.childrenCount) }}
+                    {% if form_errors(form.childrenCount)|length > 0 %}
+                        <label class="label">
+                            <span class="label-text-alt text-error">{{ form_errors(form.childrenCount) }}</span>
+                        </label>
+                    {% endif %}
+                </div>
+
+                <div class="form-control mt-6">
+                    {{ form_widget(form.submit) }}
+                </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+{% endblock %}
