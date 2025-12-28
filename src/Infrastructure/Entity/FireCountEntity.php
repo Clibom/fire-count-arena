@@ -29,6 +29,12 @@ class FireCountEntity
     #[ORM\Column(type: 'integer')]
     private int $childrenCount;
 
+    #[ORM\Column(type: 'time_immutable')]
+    private DateTimeImmutable $startTime;
+
+    #[ORM\Column(type: 'time_immutable')]
+    private DateTimeImmutable $endTime;
+
     #[ORM\Column(type: 'datetime_immutable')]
     private DateTimeImmutable $createdAt;
 
@@ -37,12 +43,16 @@ class FireCountEntity
         string $email,
         int $adultsCount,
         int $childrenCount,
+        DateTimeImmutable $startTime,
+        DateTimeImmutable $endTime,
         DateTimeImmutable $createdAt,
     ) {
         $this->setId($id);
         $this->email = $email;
         $this->adultsCount = $adultsCount;
         $this->childrenCount = $childrenCount;
+        $this->startTime = $startTime;
+        $this->endTime = $endTime;
         $this->createdAt = $createdAt;
     }
 
@@ -59,6 +69,16 @@ class FireCountEntity
     public function getChildrenCount(): int
     {
         return $this->childrenCount;
+    }
+
+    public function getStartTime(): DateTimeImmutable
+    {
+        return $this->startTime;
+    }
+
+    public function getEndTime(): DateTimeImmutable
+    {
+        return $this->endTime;
     }
 
     public function getCreatedAt(): DateTimeImmutable

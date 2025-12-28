@@ -69,6 +69,8 @@ castor deployment:prod:update    # Production update
 
 **Important**: Never run Docker, Symfony, or npm commands directly. Always use Castor.
 
+**Command Execution**: The user always executes commands themselves. Claude should never run castor or any shell commands directly. Instead, indicate which command should be run and let the user execute it.
+
 ## Project Tracking
 
 ### Roadmap

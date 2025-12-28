@@ -12,7 +12,7 @@
 
 | Item | Statut | Temps passé |
 |------|--------|-------------|
-| - | - | - |
+| Ajouter une heure de début et de fin à la session | En cours | - |
 
 ## Terminé
 

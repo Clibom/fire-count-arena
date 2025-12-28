@@ -17,6 +17,8 @@ final readonly class FireCount
         public string $email,
         public int $adultsCount,
         public int $childrenCount,
+        public DateTimeImmutable $startTime,
+        public DateTimeImmutable $endTime,
         public DateTimeImmutable $createdAt,
     ) {
     }

@@ -39,6 +39,8 @@ class FireCountController extends AbstractController
                 email: $data['email'],
                 adultsCount: $data['adultsCount'],
                 childrenCount: $data['childrenCount'],
+                startTime: $data['startTime'],
+                endTime: $data['endTime'],
             );
 
             $this->createFireCountHandler->handle($command);

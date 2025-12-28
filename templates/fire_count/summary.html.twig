@@ -14,6 +14,14 @@
                 {{ 'fire_count.summary.title'|trans }}
             </h1>
 
+            {# Session time display #}
+            <div class="bg-base-200 rounded-lg p-4 mb-6">
+                <div class="text-sm text-base-content/70 mb-1">{{ 'fire_count.summary.session_time'|trans }}</div>
+                <div class="text-2xl font-bold">
+                    {{ fireCount.startTime|date('H:i') }} - {{ fireCount.endTime|date('H:i') }}
+                </div>
+            </div>
+
             {# Large, clear display for emergency responders #}
             <div class="stats stats-vertical lg:stats-horizontal shadow w-full mb-6">
                 <div class="stat">

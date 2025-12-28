@@ -31,6 +31,8 @@ class DoctrineFireCountRepository extends ServiceEntityRepository implements Fir
             $fireCount->email,
             $fireCount->adultsCount,
             $fireCount->childrenCount,
+            $fireCount->startTime,
+            $fireCount->endTime,
             $fireCount->createdAt,
         );
 
@@ -56,6 +58,8 @@ class DoctrineFireCountRepository extends ServiceEntityRepository implements Fir
             $entity->getEmail(),
             $entity->getAdultsCount(),
             $entity->getChildrenCount(),
+            $entity->getStartTime(),
+            $entity->getEndTime(),
             $entity->getCreatedAt(),
         );
     }

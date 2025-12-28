@@ -60,6 +60,32 @@
                     {% endif %}
                 </div>
 
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                    <div class="form-control w-full">
+                        <label class="label">
+                            <span class="label-text font-medium">{{ form_label(form.startTime) }}</span>
+                        </label>
+                        {{ form_widget(form.startTime) }}
+                        {% if form_errors(form.startTime)|length > 0 %}
+                            <label class="label">
+                                <span class="label-text-alt text-error">{{ form_errors(form.startTime) }}</span>
+                            </label>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-control w-full">
+                        <label class="label">
+                            <span class="label-text font-medium">{{ form_label(form.endTime) }}</span>
+                        </label>
+                        {{ form_widget(form.endTime) }}
+                        {% if form_errors(form.endTime)|length > 0 %}
+                            <label class="label">
+                                <span class="label-text-alt text-error">{{ form_errors(form.endTime) }}</span>
+                            </label>
+                        {% endif %}
+                    </div>
+                </div>
+
                 <div class="form-control mt-6">
                     {{ form_widget(form.submit) }}
                 </div>

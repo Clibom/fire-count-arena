@@ -298,16 +298,11 @@ function db_status(): void {
 // TEST COMMANDS
 // =============================================================================
 
-#[AsTask(name: 'run', namespace: 'tests', description: 'Run all tests', aliases: ['test', 'tests'])]
-function tests_run(
-    #[AsOption(name: 'filter', shortcut: 'f', description: 'Filter tests by name')]
-    ?string $filter = null,
-): void {
-    $cmd = 'php vendor/bin/pest';
-    if ($filter) {
-        $cmd .= " --filter=\"$filter\"";
-    }
-    run("docker compose exec app bash -ci \"$cmd\"", context: context()->toInteractive());
+#[AsTask(name: 'run', namespace: 'tests', description: 'Run tests', aliases: ['tests', 't:r'])]
+function tests_run(): void
+{
+    $process = run('docker compose exec app php vendor/bin/pest --colors=always', context: context()->withAllowFailure());
+    exit($process->getExitCode());
 }
 
 #[AsTask(name: 'coverage', namespace: 'tests', description: 'Run tests with coverage report', aliases: ['coverage'])]

@@ -8,6 +8,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -60,6 +61,28 @@ class FireCountType extends AbstractType
                         value: 0,
                         message: 'validation.children_count.negative'
                     ),
+                ],
+            ])
+            ->add('startTime', TimeType::class, [
+                'label' => 'fire_count.form.start_time.label',
+                'input' => 'datetime_immutable',
+                'widget' => 'single_text',
+                'attr' => [
+                    'class' => 'input input-bordered w-full',
+                ],
+                'constraints' => [
+                    new Assert\NotNull(message: 'validation.start_time.not_null'),
+                ],
+            ])
+            ->add('endTime', TimeType::class, [
+                'label' => 'fire_count.form.end_time.label',
+                'input' => 'datetime_immutable',
+                'widget' => 'single_text',
+                'attr' => [
+                    'class' => 'input input-bordered w-full',
+                ],
+                'constraints' => [
+                    new Assert\NotNull(message: 'validation.end_time.not_null'),
                 ],
             ])
             ->add('submit', SubmitType::class, [

@@ -20,18 +20,25 @@ afterEach(function () {
 });
 
 it('creates a fire count with correct data', function () {
+    $startTime = new DateTimeImmutable('10:00');
+    $endTime = new DateTimeImmutable('12:00');
+
     $command = new CreateFireCountCommand(
         email: 'test@example.com',
         adultsCount: 2,
         childrenCount: 1,
+        startTime: $startTime,
+        endTime: $endTime,
     );
 
     $this->repository->shouldReceive('save')
         ->once()
-        ->with(Mockery::on(function (FireCount $fireCount) {
+        ->with(Mockery::on(function (FireCount $fireCount) use ($startTime, $endTime) {
             return $fireCount->email === 'test@example.com'
                 && $fireCount->adultsCount === 2
-                && $fireCount->childrenCount === 1;
+                && $fireCount->childrenCount === 1
+                && $fireCount->startTime == $startTime
+                && $fireCount->endTime == $endTime;
         }));
 
     $this->emailHandler->shouldReceive('handle')
@@ -43,7 +50,9 @@ it('creates a fire count with correct data', function () {
     expect($result)->toBeInstanceOf(FireCount::class)
         ->and($result->email)->toBe('test@example.com')
         ->and($result->adultsCount)->toBe(2)
-        ->and($result->childrenCount)->toBe(1);
+        ->and($result->childrenCount)->toBe(1)
+        ->and($result->startTime)->toEqual($startTime)
+        ->and($result->endTime)->toEqual($endTime);
 });
 
 it('generates a valid UUID for id', function () {
@@ -51,6 +60,8 @@ it('generates a valid UUID for id', function () {
         email: 'test@example.com',
         adultsCount: 0,
         childrenCount: 0,
+        startTime: new DateTimeImmutable('10:00'),
+        endTime: new DateTimeImmutable('12:00'),
     );
 
     $this->repository->shouldReceive('save')->once();
@@ -67,6 +78,8 @@ it('sends email with correct fire count id after saving', function () {
         email: 'recipient@example.com',
         adultsCount: 3,
         childrenCount: 2,
+        startTime: new DateTimeImmutable('10:00'),
+        endTime: new DateTimeImmutable('12:00'),
     );
 
     $savedFireCount = null;

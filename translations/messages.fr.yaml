@@ -16,6 +16,10 @@ fire_count:
             label: "Nombre d'adultes"
         children_count:
             label: "Nombre d'enfants"
+        start_time:
+            label: "Heure de début"
+        end_time:
+            label: "Heure de fin"
         submit: "Envoyer"
         success: "Votre soumission a été enregistrée. Consultez votre email pour obtenir le lien vers le résumé."
 
@@ -24,6 +28,9 @@ fire_count:
         adults: "Adultes"
         children: "Enfants"
         total: "Total des personnes"
+        start_time: "Heure de début"
+        end_time: "Heure de fin"
+        session_time: "Horaire de session"
         submitted_on: "Soumis le %date%"
         not_found: "Résumé introuvable."
 
@@ -49,3 +56,7 @@ validation:
     children_count:
         not_null: "Veuillez saisir le nombre d'enfants."
         negative: "Le nombre d'enfants ne peut pas être négatif."
+    start_time:
+        not_null: "Veuillez saisir l'heure de début."
+    end_time:
+        not_null: "Veuillez saisir l'heure de fin."

@@ -30,6 +30,8 @@ final readonly class CreateFireCountHandler
             email: $command->email,
             adultsCount: $command->adultsCount,
             childrenCount: $command->childrenCount,
+            startTime: $command->startTime,
+            endTime: $command->endTime,
             createdAt: new DateTimeImmutable(),
         );
 

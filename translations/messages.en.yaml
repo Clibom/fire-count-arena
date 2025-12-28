@@ -16,6 +16,10 @@ fire_count:
             label: "Number of adults"
         children_count:
             label: "Number of children"
+        start_time:
+            label: "Start time"
+        end_time:
+            label: "End time"
         submit: "Submit"
         success: "Your submission has been recorded. Check your email for the summary link."
 
@@ -24,6 +28,9 @@ fire_count:
         adults: "Adults"
         children: "Children"
         total: "Total People"
+        start_time: "Start time"
+        end_time: "End time"
+        session_time: "Session time"
         submitted_on: "Submitted on %date%"
         not_found: "Summary not found."
 
@@ -49,3 +56,7 @@ validation:
     children_count:
         not_null: "Please enter the number of children."
         negative: "The number of children cannot be negative."
+    start_time:
+        not_null: "Please enter the start time."
+    end_time:
+        not_null: "Please enter the end time."
